@@ -2,18 +2,18 @@
 #include<stdio.h>
 #include<stdlib.h>
   
-// Интерфейс
+// РРЅС‚РµСЂС„РµР№СЃ
 class Container
 {
 public:
-    // Виртуальные методы, будут реализованы далее 
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Рµ РјРµС‚РѕРґС‹, Р±СѓРґСѓС‚ СЂРµР°Р»РёР·РѕРІР°РЅС‹ РґР°Р»РµРµ 
     virtual void insert(int value) = 0;
     virtual bool exists(int value) = 0;
     virtual void remove(int value) = 0;
-    // Это потом заменим на перегруженный оператор <<
+    // Р­С‚Рѕ РїРѕС‚РѕРј Р·Р°РјРµРЅРёРј РЅР° РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ <<
     virtual void print() = 0;
 
-    // Виртуальный деструктор
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     virtual ~Container();
 };
 
@@ -21,7 +21,7 @@ Container::~Container() {
 	;
 }
 
-// Реализация интерфейса
+// Р РµР°Р»РёР·Р°С†РёСЏ РёРЅС‚РµСЂС„РµР№СЃР°
 
 class node{
 	public:
@@ -121,7 +121,7 @@ void SimpleList::insert(int value)
     }
 }
 
-void SimpleList::insert_h(node* cur, int value){//вставка
+void SimpleList::insert_h(node* cur, int value){//РІСЃС‚Р°РІРєР°
 	
 	
 	if(cur->left != NULL){
@@ -297,7 +297,7 @@ void SimpleList::remove(int value){
 					}
 					else{
 						std::cout<<"Error"<<std::endl;	
-				//предыдущий->на елем = elem->left;?? рреализовано
+				//РїСЂРµРґС‹РґСѓС‰РёР№->РЅР° РµР»РµРј = elem->left;?? СЂСЂРµР°Р»РёР·РѕРІР°РЅРѕ
 					}
 					
 					delete elem;
@@ -367,7 +367,7 @@ void SimpleList::remove(int value){
 				else{
 					std::cout<<"Error"<<std::endl;	
 				}
-				//предыдущий->на елем = elem->right;
+				//РїСЂРµРґС‹РґСѓС‰РёР№->РЅР° РµР»РµРј = elem->right;
 				delete elem;
 				}
 				else{
@@ -400,7 +400,7 @@ void SimpleList::remove(int value){
 				else{
 					std::cout<<"Error"<<std::endl;	
 				}
-					//предыдущий на елем равно нулл
+					//РїСЂРµРґС‹РґСѓС‰РёР№ РЅР° РµР»РµРј СЂР°РІРЅРѕ РЅСѓР»Р»
 					delete elem;
 				}
 			}
@@ -408,9 +408,9 @@ void SimpleList::remove(int value){
 	}
 }
 
-void SimpleList::print_h(node* cur, int level){//рекурсивная распечатка с графическим представлением
+void SimpleList::print_h(node* cur, int level){//СЂРµРєСѓСЂСЃРёРІРЅР°СЏ СЂР°СЃРїРµС‡Р°С‚РєР° СЃ РіСЂР°С„РёС‡РµСЃРєРёРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµРј
 		if(cur){
-			print_h(cur->right , level+1);//вывод правого поддерева
+			print_h(cur->right , level+1);//РІС‹РІРѕРґ РїСЂР°РІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
 			for(int i = 0; i<level; i++){
 				std::cout<<"            ";
 			} 	
@@ -419,7 +419,7 @@ void SimpleList::print_h(node* cur, int level){//рекурсивная распечатка с графич
 			
 			//std::cout<<"tip: "<<cur->type<<" znachenie: "<<cur->value<<std::endl;
 
-			print_h(cur->left , level+1);//вывод левого поддерева
+			print_h(cur->left , level+1);//РІС‹РІРѕРґ Р»РµРІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
 		}
 }
 
