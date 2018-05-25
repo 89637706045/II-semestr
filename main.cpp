@@ -216,24 +216,31 @@ void box2D::movement(){
                 continue;
             }
 
-            curM->vx += 37*100*cur->m/(curM->xp - cur->xp);
-            curM->vy += 37*100*cur->m/(curM->yp - cur->yp);
+            curM->vx += 37*1*cur->m/(curM->xp - cur->xp);
+            curM->vy += 37*1*cur->m/(curM->yp - cur->yp);
 
             cur = cur->next;
         }
-
+        double x_temp;
+        double y_temp;
         //удар с забором и смена координат
-        double x_temp = curM->vx*7*0.01/5;
-        double y_temp = curM->vy*7*0.01/5;
+        if(abs(curM->vx) >= 100){x_temp = curM->vx*7*0.01/5;}
+        if(abs(curM->vx) < 100 && abs(curM->vx) > 10){x_temp = curM->vx*7*0.1/5;}
+        if(abs(curM->vx) <= 10) {x_temp = curM->vx*7/5;}
+
+        if(abs(curM->vy) >= 100){y_temp = curM->vy*7*0.01/5;}
+        if(abs(curM->vy) < 100 && abs(curM->vx) > 10){y_temp = curM->vy*7*0.1/5;}
+        if(abs(curM->vy) <= 10) {y_temp = curM->vy*7/5;}
+
 
         if((x_temp + curM->r) >=(my_box->getX())){
             curM->vx = (-1)*(curM->vx);
-            curM->xp = (my_box->getX() - curM->r);
+            curM->xp = (my_box->getX() - curM->r)-20;
         }
         else{
             if((x_temp - curM->r) <= 0){
             curM->vx = (-1)*(curM->vx);
-            curM->xp = (0 + curM->r);
+            curM->xp = (0 + curM->r)+20;
             }
             else{
                 curM->xp = x_temp;
@@ -242,18 +249,29 @@ void box2D::movement(){
 
         if((y_temp + curM->r) >=(my_box->getY())){
             curM->vy = (-1)*(curM->vy);
-            curM->yp = (my_box->getY() - curM->r);
+            curM->yp = (my_box->getY() - curM->r)-20;
         }
         else{
             if((y_temp - curM->r) <= 0){
             curM->vy = (-1)*(curM->vy);
-            curM->yp = (0 + curM->r);
+            curM->yp = (0 + curM->r)+20;
             }
             else{
                 curM->yp = y_temp;
             }
         }
-
+        if(curM->vx > 800){
+            curM->vx = 500;
+        }
+        if(curM->vy > 800){
+            curM->vy = 500;
+        }
+        if(curM->vx < -800){
+            curM->vx = -500;
+        }
+        if(curM->vy < -800){
+            curM->vy  = -500;
+        }
         curM = curM->next;
     }
 }
